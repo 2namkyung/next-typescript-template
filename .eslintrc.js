@@ -1,21 +1,35 @@
 module.exports = {
-  root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
   parserOptions: {
-    project: "./tsconfig.json",
+    ecmaFeatures: {
+      jsx: false,
+    },
+    ecmaVersion: 13,
+    sourceType: "module",
   },
-  env: {
-    node: true,
-  },
+  plugins: ["react", "@typescript-eslint"],
   extends: [
-    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "airbnb",
-    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
   ],
+  env: {
+    browser: true,
+    es2021: true,
+  },
   rules: {
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/jsx-filename-extension": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
   },
 };
